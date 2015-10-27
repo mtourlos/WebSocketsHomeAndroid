@@ -1,17 +1,11 @@
 package com.example.websocketshome;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
@@ -26,6 +20,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		connectWebSocket();
+		
 	}
 
 	@Override
@@ -47,10 +43,14 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private void connectWebSocket() {
+	public void con(View v){
+		connectWebSocket();
+	}
+	
+	public void connectWebSocket() {
 		  URI uri;
 		  try {
-		    uri = new URI("ws://websockethost:8080");
+		    uri = new URI("ws://10.10.10.62:8080/WebsocketHome/actions");
 		  } catch (URISyntaxException e) {
 		    e.printStackTrace();
 		    return;
